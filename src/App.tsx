@@ -69,13 +69,16 @@ export default function App() {
             <Zap className="text-primary fill-primary w-6 h-6" />
             <span className="font-display font-black text-xl tracking-tighter">THEMONARCH<span className="text-primary">.IN</span></span>
           </div>
-          <motion.button
+          <motion.a
+            href="https://rzp.io/rzp/MonarchE-bookBundle"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="bg-primary text-bg font-display font-bold px-6 py-2 rounded-full text-sm shadow-glow hover:shadow-glow-strong transition-all"
           >
             ACCESS SYSTEM
-          </motion.button>
+          </motion.a>
         </div>
       </nav>
 
@@ -99,15 +102,18 @@ export default function App() {
           </p>
           
           <div className="flex flex-col items-center gap-6">
-            <motion.button
+            <motion.a
+              href="https://rzp.io/rzp/MonarchE-bookBundle"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(0, 240, 255, 0.5)" }}
               whileTap={{ scale: 0.95 }}
               className="bg-primary text-bg text-xl font-display font-black px-12 py-6 rounded-2xl flex items-center gap-3 group"
             >
               <Zap className="w-6 h-6 fill-bg" />
-              UNLOCK FOR ₹49
+              UNLOCK FOR ₹20
               <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-            </motion.button>
+            </motion.a>
             <p className="text-secondary text-sm font-mono uppercase tracking-widest">
               Limited Time Access • Instant Download
             </p>
@@ -193,7 +199,7 @@ export default function App() {
             <h3 className="text-3xl font-black mb-2">COMPLETE VAULT ACCESS</h3>
             <div className="flex items-center justify-center gap-4 mb-8">
               <span className="text-secondary line-through text-2xl">₹999</span>
-              <span className="text-5xl font-black text-primary text-glow">₹49</span>
+              <span className="text-5xl font-black text-primary text-glow">₹20</span>
             </div>
             <ul className="text-left space-y-4 mb-10 max-w-xs mx-auto">
               <li className="flex items-center gap-3 text-sm">
@@ -213,14 +219,17 @@ export default function App() {
                 <span>Mobile & Desktop Compatible</span>
               </li>
             </ul>
-            <motion.button
+            <motion.a
+              href="https://rzp.io/rzp/MonarchE-bookBundle"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(0, 240, 255, 0.5)" }}
               whileTap={{ scale: 0.95 }}
               className="w-full bg-primary text-bg py-5 rounded-xl font-display font-black text-xl flex items-center justify-center gap-3"
             >
               <Lock className="w-5 h-5 fill-bg" />
               SECURE ACCESS NOW
-            </motion.button>
+            </motion.a>
           </GlowCard>
         </div>
       </section>
@@ -295,14 +304,17 @@ export default function App() {
             <p className="text-xl text-secondary mb-12 max-w-2xl mx-auto">
               Limited Access. The price will increase to <span className="text-white font-bold italic">₹999</span> very soon. Don't let this system pass you by.
             </p>
-            <motion.button
+            <motion.a
+              href="https://rzp.io/rzp/MonarchE-bookBundle"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(0, 240, 255, 0.6)" }}
               whileTap={{ scale: 0.95 }}
               className="bg-primary text-bg text-2xl font-display font-black px-16 py-8 rounded-2xl flex items-center gap-4 mx-auto group"
             >
               <Zap className="w-8 h-8 fill-bg" />
               ⚡ GET INSTANT ACCESS NOW
-            </motion.button>
+            </motion.a>
             <div className="mt-8 flex items-center justify-center gap-8 text-xs font-mono text-secondary uppercase tracking-[0.2em]">
               <span>Secure Payment</span>
               <span>•</span>

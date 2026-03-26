@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Orbitron", sans-serif;
+
+  --color-bg: #0A0A0A;
+  --color-primary: #00F0FF;
+  --color-accent: #0066FF;
+  --color-secondary: #A0A0A0;
+
+  --shadow-glow: 0 0 15px rgba(0, 240, 255, 0.4);
+  --shadow-glow-strong: 0 0 25px rgba(0, 240, 255, 0.6);
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-white font-sans antialiased selection:bg-primary selection:text-bg;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display uppercase tracking-wider;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+  }
+
+  .border-glow {
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    border-color: rgba(0, 240, 255, 0.3);
+  }
+
+  .bg-thunder-gradient {
+    background: radial-gradient(circle at 50% 50%, rgba(0, 102, 255, 0.15) 0%, transparent 70%);
+  }
+}

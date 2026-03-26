@@ -17,7 +17,7 @@ import LightningEffect from "./components/LightningEffect";
 const GlowCard = ({ children, className = "" }: { children: ReactNode; className?: string }) => (
   <motion.div
     whileHover={{ scale: 1.02, boxShadow: "0 0 30px rgba(0, 240, 255, 0.3)" }}
-    className={`bg-zinc-900/50 border border-primary/20 rounded-2xl p-8 backdrop-blur-sm relative overflow-hidden group ${className}`}
+    className={`bg-zinc-900/50 border border-primary/20 rounded-2xl p-6 sm:p-8 backdrop-blur-sm relative overflow-hidden group ${className}`}
   >
     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
     <div className="relative z-10">{children}</div>
@@ -25,12 +25,12 @@ const GlowCard = ({ children, className = "" }: { children: ReactNode; className
 );
 
 const SectionHeading = ({ children, subtitle }: { children: ReactNode; subtitle?: string }) => (
-  <div className="text-center mb-16">
+  <div className="text-center mb-12 sm:mb-16">
     {subtitle && (
       <motion.span
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
-        className="text-primary text-xs font-display tracking-[0.3em] uppercase mb-4 block"
+        className="text-primary text-[10px] sm:text-xs font-display tracking-[0.3em] uppercase mb-3 sm:mb-4 block"
       >
         {subtitle}
       </motion.span>
@@ -38,7 +38,7 @@ const SectionHeading = ({ children, subtitle }: { children: ReactNode; subtitle?
     <motion.h2
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      className="text-4xl md:text-5xl font-black text-glow"
+      className="text-3xl sm:text-4xl md:text-5xl font-black text-glow leading-tight"
     >
       {children}
     </motion.h2>
@@ -59,15 +59,19 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-bg selection:bg-primary selection:text-bg overflow-x-hidden">
+    <div className="min-h-screen bg-bg selection:bg-primary selection:text-bg overflow-x-hidden relative">
+      <div className="noise" />
+      <div className="scanline" />
       <LightningEffect />
 
       {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-bg/80 backdrop-blur-md border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Zap className="text-primary fill-primary w-6 h-6" />
-            <span className="font-display font-black text-xl tracking-tighter">THEMONARCH<span className="text-primary">.IN</span></span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+            <Zap className="text-primary fill-primary w-4 h-4 sm:w-6 sm:h-6" />
+            <span className="font-display font-black text-[11px] xs:text-sm sm:text-xl tracking-tighter uppercase">
+              THEMONARCH<span className="text-primary">.IN</span>
+            </span>
           </div>
           <motion.a
             href="https://rzp.io/rzp/MonarchE-bookBundle"
@@ -75,7 +79,7 @@ export default function App() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-primary text-bg font-display font-bold px-6 py-2 rounded-full text-sm shadow-glow hover:shadow-glow-strong transition-all"
+            className="bg-primary text-bg font-display font-bold px-3 sm:px-6 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-sm shadow-glow hover:shadow-glow-strong transition-all whitespace-nowrap flex-shrink-0"
           >
             ACCESS SYSTEM
           </motion.a>
@@ -83,109 +87,127 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-40 pb-32 px-6 flex flex-col items-center justify-center text-center overflow-hidden">
+      <section className="relative pt-28 sm:pt-48 pb-16 sm:pb-40 px-4 sm:px-6 flex flex-col items-center justify-center text-center overflow-hidden">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="relative z-10 max-w-4xl"
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="relative z-10 w-full max-w-5xl"
         >
-          <span className="text-primary font-display text-sm tracking-[0.4em] uppercase mb-6 block">
-            TheMonarch.in presents
-          </span>
-          <h1 className="text-6xl md:text-8xl font-black mb-8 leading-none tracking-tighter text-glow">
+          <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-3 py-1 rounded-full mb-6 sm:mb-8">
+            <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
+            <span className="text-primary font-display text-[9px] sm:text-xs tracking-[0.3em] uppercase">
+              System Online: TheMonarch.in
+            </span>
+          </div>
+          
+          <h1 className="text-4xl xs:text-5xl sm:text-7xl md:text-9xl font-black mb-6 sm:mb-10 leading-[1] sm:leading-[0.9] tracking-tighter text-glow-strong">
             MONARCH <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">KNOWLEDGE VAULT ⚡</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient-x">KNOWLEDGE VAULT</span>
           </h1>
-          <p className="text-secondary text-xl md:text-2xl max-w-2xl mx-auto mb-12 font-light">
-            500+ Premium Ebooks. One System. <span className="text-white font-semibold">Total Control.</span>
+          
+          <p className="text-secondary text-sm sm:text-xl md:text-2xl max-w-3xl mx-auto mb-8 sm:mb-16 font-light leading-relaxed px-2">
+            Access the <span className="text-white font-bold">500+ Premium Ebook System</span>. Curated for those who refuse to be average. <span className="text-primary font-bold">Dominate through knowledge.</span>
           </p>
           
-          <div className="flex flex-col items-center gap-6">
+          <div className="flex flex-col items-center gap-6 sm:gap-8">
             <motion.a
               href="https://rzp.io/rzp/MonarchE-bookBundle"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(0, 240, 255, 0.5)" }}
+              whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(0, 240, 255, 0.6)" }}
               whileTap={{ scale: 0.95 }}
-              className="bg-primary text-bg text-xl font-display font-black px-12 py-6 rounded-2xl flex items-center gap-3 group"
+              className="bg-primary text-bg text-sm sm:text-2xl font-display font-black px-6 sm:px-16 py-4 sm:py-8 rounded-xl sm:rounded-3xl flex items-center justify-center gap-3 sm:gap-4 group w-full sm:w-fit whitespace-nowrap shadow-2xl relative overflow-hidden"
             >
-              <Zap className="w-6 h-6 fill-bg" />
-              UNLOCK FOR ₹20
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              <Zap className="w-5 h-5 sm:w-8 sm:h-8 fill-bg" />
+              UNLOCK SYSTEM FOR ₹20
+              <ArrowRight className="w-5 h-5 sm:w-8 sm:h-8 group-hover:translate-x-2 transition-transform" />
             </motion.a>
-            <p className="text-secondary text-sm font-mono uppercase tracking-widest">
-              Limited Time Access • Instant Download
-            </p>
+            
+            <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 text-secondary text-[9px] sm:text-xs font-mono uppercase tracking-[0.2em]">
+              <span className="flex items-center gap-1.5 sm:gap-2"><CheckCircle2 className="w-3 h-3 text-primary" /> Instant G-Drive Access</span>
+              <span className="hidden sm:block opacity-30">|</span>
+              <span className="flex items-center gap-1.5 sm:gap-2"><CheckCircle2 className="w-3 h-3 text-primary" /> Lifetime Updates</span>
+            </div>
           </div>
         </motion.div>
 
         {/* Decorative elements */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -z-10" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-primary/5 rounded-full blur-[150px] -z-10 animate-pulse" />
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-bg to-transparent z-10" />
       </section>
 
       {/* Authority Statement */}
-      <section className="py-24 px-6 bg-zinc-900/30 border-y border-white/5">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.p
-            initial={{ opacity: 0, scale: 0.9 }}
+      <section className="py-20 sm:py-40 px-4 sm:px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-thunder-gradient opacity-50" />
+        <div className="max-w-5xl mx-auto text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="text-3xl md:text-5xl font-display font-black italic tracking-tight"
+            transition={{ duration: 1 }}
+            className="space-y-6 sm:space-y-8"
           >
-            "THIS IS NOT FOR EVERYONE. ONLY FOR THOSE WHO WANT TO <span className="text-primary text-glow">DOMINATE</span>."
-          </motion.p>
+            <div className="w-12 sm:w-20 h-1 bg-primary mx-auto rounded-full shadow-glow" />
+            <p className="text-2xl sm:text-4xl md:text-6xl font-display font-black italic tracking-tight leading-tight px-2">
+              "THIS IS NOT FOR THE <span className="text-secondary/40">AVERAGE</span>. <br />
+              ONLY FOR THOSE BORN TO <span className="text-primary text-glow-strong">DOMINATE</span>."
+            </p>
+            <div className="w-12 sm:w-20 h-1 bg-primary mx-auto rounded-full shadow-glow" />
+          </motion.div>
         </div>
       </section>
 
       {/* Offer Section */}
-      <section className="py-32 px-6 max-w-7xl mx-auto">
+      <section className="py-20 sm:py-32 px-4 sm:px-6 max-w-7xl mx-auto">
         <SectionHeading subtitle="The System">The Monarch Arsenal</SectionHeading>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-20">
           <GlowCard>
-            <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
-              <Shield className="text-primary w-6 h-6" />
+            <div className="bg-primary/10 w-10 sm:w-12 h-10 sm:h-12 rounded-lg flex items-center justify-center mb-4 sm:mb-6">
+              <Shield className="text-primary w-5 sm:w-6 h-5 sm:h-6" />
             </div>
-            <h3 className="text-xl font-bold mb-4">500+ PREMIUM EBOOKS</h3>
-            <p className="text-secondary leading-relaxed">
+            <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4">500+ PREMIUM EBOOKS</h3>
+            <p className="text-secondary text-sm sm:text-base leading-relaxed">
               The most comprehensive collection of elite knowledge ever assembled. Curated for the 1%.
             </p>
           </GlowCard>
           
           <GlowCard>
-            <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
-              <Clock className="text-primary w-6 h-6" />
+            <div className="bg-primary/10 w-10 sm:w-12 h-10 sm:h-12 rounded-lg flex items-center justify-center mb-4 sm:mb-6">
+              <Clock className="text-primary w-5 sm:w-6 h-5 sm:h-6" />
             </div>
-            <h3 className="text-xl font-bold mb-4">INSTANT ACCESS</h3>
-            <p className="text-secondary leading-relaxed">
+            <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4">INSTANT ACCESS</h3>
+            <p className="text-secondary text-sm sm:text-base leading-relaxed">
               No waiting. Instant delivery via secure Google Drive link. Start your evolution immediately.
             </p>
           </GlowCard>
           
           <GlowCard>
-            <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
-              <Zap className="text-primary w-6 h-6" />
+            <div className="bg-primary/10 w-10 sm:w-12 h-10 sm:h-12 rounded-lg flex items-center justify-center mb-4 sm:mb-6">
+              <Zap className="text-primary w-5 sm:w-6 h-5 sm:h-6" />
             </div>
-            <h3 className="text-xl font-bold mb-4">LIFETIME UPDATES</h3>
-            <p className="text-secondary leading-relaxed">
+            <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4">LIFETIME UPDATES</h3>
+            <p className="text-secondary text-sm sm:text-base leading-relaxed">
               The vault is alive. We constantly add new high-value resources to keep you ahead of the curve.
             </p>
           </GlowCard>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-32">
+        <div className="grid grid-cols-2 lg:grid-cols-6 gap-3 sm:gap-4 mb-20 sm:mb-32">
           {categories.map((cat, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              className="bg-zinc-900/50 border border-white/5 p-6 rounded-xl text-center hover:border-primary/30 transition-colors group"
+              whileHover={{ y: -5, borderColor: "rgba(0, 240, 255, 0.5)", backgroundColor: "rgba(0, 240, 255, 0.05)" }}
+              className="bg-zinc-900/50 border border-white/5 p-4 sm:p-6 rounded-xl sm:rounded-2xl text-center transition-all duration-300 group cursor-default"
             >
-              <div className="text-secondary group-hover:text-primary transition-colors mb-4 flex justify-center">
+              <div className="text-secondary group-hover:text-primary transition-colors mb-3 sm:mb-4 flex justify-center group-hover:scale-110 duration-300">
                 {cat.icon}
               </div>
-              <span className="text-xs font-display font-bold uppercase tracking-wider">{cat.title}</span>
+              <span className="text-[9px] sm:text-xs font-display font-bold uppercase tracking-widest group-hover:text-white transition-colors">{cat.title}</span>
             </motion.div>
           ))}
         </div>
@@ -196,10 +218,10 @@ export default function App() {
             <div className="inline-block bg-primary text-bg text-[10px] font-black px-3 py-1 rounded-full mb-6 tracking-widest uppercase">
               Limited Time Offer
             </div>
-            <h3 className="text-3xl font-black mb-2">COMPLETE VAULT ACCESS</h3>
+            <h3 className="text-2xl sm:text-3xl font-black mb-2">COMPLETE VAULT ACCESS</h3>
             <div className="flex items-center justify-center gap-4 mb-8">
-              <span className="text-secondary line-through text-2xl">₹999</span>
-              <span className="text-5xl font-black text-primary text-glow">₹20</span>
+              <span className="text-secondary line-through text-xl sm:text-2xl">₹999</span>
+              <span className="text-4xl sm:text-5xl font-black text-primary text-glow">₹20</span>
             </div>
             <ul className="text-left space-y-4 mb-10 max-w-xs mx-auto">
               <li className="flex items-center gap-3 text-sm">
@@ -225,7 +247,7 @@ export default function App() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(0, 240, 255, 0.5)" }}
               whileTap={{ scale: 0.95 }}
-              className="w-full bg-primary text-bg py-5 rounded-xl font-display font-black text-xl flex items-center justify-center gap-3"
+              className="w-full bg-primary text-bg py-4 sm:py-5 rounded-xl font-display font-black text-lg sm:text-xl flex items-center justify-center gap-3 whitespace-nowrap"
             >
               <Lock className="w-5 h-5 fill-bg" />
               SECURE ACCESS NOW
@@ -235,46 +257,46 @@ export default function App() {
       </section>
 
       {/* Value Section */}
-      <section className="py-32 px-6 bg-zinc-900/20">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+      <section className="py-20 sm:py-32 px-4 sm:px-6 bg-zinc-900/20">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 sm:gap-20 items-center">
           <div>
             <SectionHeading subtitle="Efficiency">Why The Monarch Vault?</SectionHeading>
-            <div className="space-y-12">
-              <div className="flex gap-6">
-                <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0">
-                  <Clock className="text-primary w-8 h-8" />
+            <div className="space-y-8 sm:space-y-12">
+              <div className="flex gap-4 sm:gap-6">
+                <div className="bg-primary/10 w-12 sm:w-16 h-12 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
+                  <Clock className="text-primary w-6 sm:w-8 h-6 sm:h-8" />
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold mb-2">SAVES 1000+ HOURS</h4>
-                  <p className="text-secondary">Stop searching for fragmented information. We've curated the absolute best, saving you years of trial and error.</p>
+                  <h4 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">SAVES 1000+ HOURS</h4>
+                  <p className="text-secondary text-sm sm:text-base">Stop searching for fragmented information. We've curated the absolute best, saving you years of trial and error.</p>
                 </div>
               </div>
-              <div className="flex gap-6">
-                <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0">
-                  <Shield className="text-primary w-8 h-8" />
+              <div className="flex gap-4 sm:gap-6">
+                <div className="bg-primary/10 w-12 sm:w-16 h-12 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
+                  <Shield className="text-primary w-6 sm:w-8 h-6 sm:h-8" />
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold mb-2">CURATED ELITE KNOWLEDGE</h4>
-                  <p className="text-secondary">This is not "fluff". Every resource is selected for its potential to provide a massive ROI on your time.</p>
+                  <h4 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">CURATED ELITE KNOWLEDGE</h4>
+                  <p className="text-secondary text-sm sm:text-base">This is not "fluff". Every resource is selected for its potential to provide a massive ROI on your time.</p>
                 </div>
               </div>
-              <div className="flex gap-6">
-                <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0">
-                  <Zap className="text-primary w-8 h-8" />
+              <div className="flex gap-4 sm:gap-6">
+                <div className="bg-primary/10 w-12 sm:w-16 h-12 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
+                  <Zap className="text-primary w-6 sm:w-8 h-6 sm:h-8" />
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold mb-2">BUILT FOR THE SERIOUS</h4>
-                  <p className="text-secondary">The Monarch system is designed for those who treat knowledge as a weapon for domination.</p>
+                  <h4 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">BUILT FOR THE SERIOUS</h4>
+                  <p className="text-secondary text-sm sm:text-base">The Monarch system is designed for those who treat knowledge as a weapon for domination.</p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="relative">
+          <div className="relative mt-8 sm:mt-0">
             <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl border border-primary/30 flex items-center justify-center overflow-hidden">
               <div className="absolute inset-0 bg-[url('https://picsum.photos/seed/monarch/800/800')] opacity-20 mix-blend-overlay grayscale" />
-              <div className="relative z-10 text-center p-12">
-                <div className="text-8xl font-display font-black text-primary mb-4">1%</div>
-                <div className="text-xl font-display tracking-widest uppercase">Elite Mindset Only</div>
+              <div className="relative z-10 text-center p-8 sm:p-12">
+                <div className="text-6xl sm:text-8xl font-display font-black text-primary mb-2 sm:mb-4">1%</div>
+                <div className="text-sm sm:text-xl font-display tracking-widest uppercase">Elite Mindset Only</div>
               </div>
               {/* Animated rings */}
               <motion.div
@@ -293,15 +315,15 @@ export default function App() {
       </section>
 
       {/* Final CTA & Urgency */}
-      <section className="py-32 px-6 relative overflow-hidden">
+      <section className="py-20 sm:py-32 px-4 sm:px-6 relative overflow-hidden">
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="bg-primary/5 border border-primary/30 p-16 rounded-[3rem] backdrop-blur-xl"
+            className="bg-primary/5 border border-primary/30 px-6 py-12 sm:p-16 rounded-3xl sm:rounded-[3rem] backdrop-blur-xl"
           >
-            <h2 className="text-5xl md:text-7xl font-black mb-8 text-glow">READY TO DOMINATE?</h2>
-            <p className="text-xl text-secondary mb-12 max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-5xl md:text-7xl font-black mb-6 sm:mb-8 text-glow leading-tight">READY TO DOMINATE?</h2>
+            <p className="text-base sm:text-xl text-secondary mb-8 sm:mb-12 max-w-2xl mx-auto">
               Limited Access. The price will increase to <span className="text-white font-bold italic">₹999</span> very soon. Don't let this system pass you by.
             </p>
             <motion.a
@@ -310,16 +332,16 @@ export default function App() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(0, 240, 255, 0.6)" }}
               whileTap={{ scale: 0.95 }}
-              className="bg-primary text-bg text-2xl font-display font-black px-16 py-8 rounded-2xl flex items-center gap-4 mx-auto group"
+              className="bg-primary text-bg text-sm sm:text-2xl font-display font-black px-6 sm:px-16 py-4 sm:py-8 rounded-xl sm:rounded-2xl flex items-center justify-center gap-3 mx-auto group w-full sm:w-fit whitespace-nowrap"
             >
-              <Zap className="w-8 h-8 fill-bg" />
-              ⚡ GET INSTANT ACCESS NOW
+              <Zap className="w-6 h-6 sm:w-8 sm:h-8 fill-bg" />
+              GET INSTANT ACCESS NOW
             </motion.a>
-            <div className="mt-8 flex items-center justify-center gap-8 text-xs font-mono text-secondary uppercase tracking-[0.2em]">
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-[9px] sm:text-xs font-mono text-secondary uppercase tracking-[0.2em]">
               <span>Secure Payment</span>
-              <span>•</span>
+              <span className="hidden sm:inline">•</span>
               <span>Instant G-Drive Link</span>
-              <span>•</span>
+              <span className="hidden sm:inline">•</span>
               <span>24/7 Support</span>
             </div>
           </motion.div>

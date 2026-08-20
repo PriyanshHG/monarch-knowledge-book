@@ -1,20 +1,77 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# MONARCH KNOWLEDGE VAULT
 
-# Run and deploy your AI Studio app
+### Access the 500+ Premium Ebook System.
 
-This contains everything you need to run your app locally.
+A curated digital knowledge vault built for people who believe that knowledge is a competitive advantage.
 
-View your app in AI Studio: https://ai.studio/apps/0bb79e8c-d009-4f10-b20c-7f7cc03edf4b
+**Dominate through knowledge.**
 
-## Run Locally
+## 📚 Overview
 
-**Prerequisites:**  Node.js
+Monarch Knowledge Vault is a premium digital knowledge platform designed to bring a large collection of ebooks into one structured, accessible experience.
 
+The platform focuses on **discovery, presentation, and access to curated knowledge** across multiple areas of learning and personal development.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## ✨ Highlights
+
+* 500+ curated ebooks
+* Premium digital library experience
+* Organized knowledge discovery
+* Modern, responsive interface
+* Conversion-focused product presentation
+* Designed for a premium digital-product experience
+
+## 🛠️ Built With
+
+* React
+* TypeScript
+* Tailwind CSS
+* Vite
+* AI-assisted development workflow
+
+## 🎯 Project Goal
+
+The goal of Monarch Knowledge Vault is simple:
+
+**Make valuable knowledge easier to discover, access, and consume.**
+
+The interface was designed around a premium editorial aesthetic rather than a conventional ebook marketplace.
+
+## 🚀 Run Locally
+
+### Prerequisites
+
+* Node.js
+* npm
+
+### Installation
+
+```bash
+git clone <your-repository-url>
+cd monarch-knowledge-vault
+npm install
+```
+
+### Development
+
+```bash
+npm run dev
+```
+
+The application will be available at:
+
+`http://localhost:5173`
+
+## 🔐 Environment Variables
+
+If the project requires environment variables, create a `.env.local` file and add the required values.
+
+**Never commit API keys, tokens, credentials, or other secrets to the repository.**
+
+## 📌 Note
+
+Monarch Knowledge Vault is a digital knowledge platform and its content, branding, and associated assets may be subject to their respective ownership and usage rights.
+
+---
+
+**Designed & developed by Priyansh Dubey.**
